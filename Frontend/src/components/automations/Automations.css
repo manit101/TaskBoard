@@ -10,7 +10,7 @@
 }
 
 .create-automation-btn {
-  background-color: #2563eb;
+  background-color: #547792;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -20,7 +20,7 @@
 }
 
 .create-automation-btn:hover {
-  background-color: #1d4ed8;
+  background-color: #94B4C1;
 }
 
 .empty-automations {
@@ -47,7 +47,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  border-left: 4px solid #2563eb;
+  border-left: 4px solid #547792;
 }
 
 .automation-card.inactive {
@@ -120,6 +120,7 @@
 
 .form-section {
   margin-bottom: 24px;
+  margin-left: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -180,16 +181,17 @@
   bottom: 0;
   background-color: #cbd5e1;
   transition: .4s;
-  border-radius: 34px;
-  padding: 4px;
+  border-radius: 30px;
+  padding: 0px;
 }
 
 .toggle-label:before {
   position: absolute;
   content: "";
-  height: 22px;
-  width: 22px;
-  left: 4px;
+  height: 15px;
+  width: 15px;
+  left: 10px;
+  right: 1px;
   bottom: 4px;
   background-color: white;
   transition: .4s;
@@ -197,7 +199,7 @@
 }
 
 input:checked + .toggle-label {
-  background-color: #2563eb;
+  background-color: #547792;
 }
 
 input:checked + .toggle-label:before {
@@ -206,9 +208,9 @@ input:checked + .toggle-label:before {
 
 .toggle-text {
   position: absolute;
-  top: 6px;
-  right: 8px;
-  font-size: 12px;
+  top: 3px;
+  right: 6px;
+  font-size: 10px;
   color: white;
 }
 

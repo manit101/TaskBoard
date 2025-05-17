@@ -4,9 +4,9 @@
  */
 
 export const lightTheme = {
-  primary: '#2563eb',
+  primary: '#547792',
   primaryLight: '#3b82f6',
-  primaryDark: '#1d4ed8',
+  primaryDark: '#94B4C1',
   secondary: '#0ea5e9',
   secondaryLight: '#38bdf8',
   secondaryDark: '#0284c7',
@@ -20,7 +20,7 @@ export const lightTheme = {
   error: '#dc2626',
   success: '#16a34a',
   warning: '#ca8a04',
-  info: '#2563eb',
+  info: '#547792',
   
   shadowSm: '0 1px 2px rgba(0, 0, 0, 0.05)',
   shadowMd: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
@@ -30,7 +30,7 @@ export const lightTheme = {
 export const darkTheme = {
   primary: '#3b82f6',
   primaryLight: '#60a5fa',
-  primaryDark: '#2563eb',
+  primaryDark: '#547792',
   secondary: '#38bdf8',
   secondaryLight: '#7dd3fc',
   secondaryDark: '#0284c7',

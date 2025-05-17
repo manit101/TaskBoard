@@ -283,7 +283,7 @@ function AutomationForm({ project, automation = null, isEditing = false, onClose
                 onChange={(e) => setIsActive(e.target.checked)}
               />
               <label htmlFor="isActive" className="toggle-label">
-                <span className="toggle-text">{isActive ? 'Active' : 'Inactive'}</span>
+                <span className="toggle-text"></span>
               </label>
             </div>
           </div>

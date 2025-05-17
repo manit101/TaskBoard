@@ -250,11 +250,14 @@ input:disabled + .toggle-slider {
 .toggle-label {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-3);
   cursor: pointer;
 }
 
 .toggle-text {
+  align-items: center;
+  justify-content: center;
   font-size: var(--font-size-sm);
   color: var(--color-text);
   user-select: none;

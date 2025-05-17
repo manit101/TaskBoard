@@ -130,8 +130,9 @@
   padding: var(--space-3);
   overflow-y: auto;
   flex-grow: 1;
-  display: flex;
+
   flex-direction: column;
+  background-color: beige;
   gap: var(--space-2);
 }
 
@@ -140,7 +141,7 @@
 }
 
 .task-list::-webkit-scrollbar-track {
-  background: transparent;
+  background: beige;
 }
 
 .task-list::-webkit-scrollbar-thumb {
@@ -152,12 +153,13 @@
   text-align: center;
   padding: var(--space-6);
   color: var(--color-text-muted);
+  background-color: beige;
   font-size: var(--font-size-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 50%;
   opacity: 0.7;
 }
 

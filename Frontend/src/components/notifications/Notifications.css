@@ -13,8 +13,8 @@
 
 .mark-all-read-btn {
   background-color: transparent;
-  color: #2563eb;
-  border: 1px solid #2563eb;
+  color: #547792;
+  border: 1px solid #547792;
   padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
@@ -96,7 +96,7 @@
 .unread-indicator {
   width: 10px;
   height: 10px;
-  background-color: #2563eb;
+  background-color: #547792;
   border-radius: 50%;
   position: absolute;
   top: 16px;
