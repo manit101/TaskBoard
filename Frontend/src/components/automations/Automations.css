@@ -23,19 +23,6 @@
   background-color: #94B4C1;
 }
 
-.empty-automations {
-  text-align: center;
-  padding: 30px;
-  background-color: #f8fafc;
-  border-radius: 8px;
-  border: 1px dashed #cbd5e1;
-}
-
-.empty-automations p {
-  margin-bottom: 16px;
-  color: #64748b;
-}
-
 .automation-list {
   display: flex;
   flex-direction: column;

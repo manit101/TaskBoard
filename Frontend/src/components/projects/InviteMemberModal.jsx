@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { inviteUserToProject } from '../../services/projectService';
-import './Projects.css';
+import { AlertCircle } from 'lucide-react';
+import Modal from '../common/Modal';
+import '../tasks/Tasks.css'; // Import the same styles as NewTaskModal
 
 function InviteMemberModal({ projectId, onClose, onMemberInvited }) {
   const [email, setEmail] = useState('');
@@ -15,7 +17,6 @@ function InviteMemberModal({ projectId, onClose, onMemberInvited }) {
       return;
     }
     
-    // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError('Please enter a valid email address');
@@ -28,54 +29,62 @@ function InviteMemberModal({ projectId, onClose, onMemberInvited }) {
       onMemberInvited();
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to invite user');
-    } finally {
       setIsSubmitting(false);
     }
   };
+
+  const modalFooter = (
+    <div className="form-footer">
+      <button 
+        type="button" 
+        className="modal-secondary-btn" 
+        onClick={onClose}
+        disabled={isSubmitting}
+      >
+        Cancel
+      </button>
+      <button 
+        type="button"
+        onClick={handleSubmit}
+        className={`modal-primary-btn ${isSubmitting ? 'loading-btn' : ''}`}
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Sending Invite...' : 'Send Invitation'}
+      </button>
+    </div>
+  );
   
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h2>Invite Member</h2>
-          <button className="close-btn" onClick={onClose}>&times;</button>
-        </div>
+    <Modal
+      isOpen={true}
+      onClose={onClose}
+      title="Invite Team Member"
+      size="small"
+      footer={modalFooter}
+    >
+      <form className="modal-form">
+        {error && (
+          <div className="error-message">
+            <AlertCircle size={18} />
+            {error}
+          </div>
+        )}
         
-        <form onSubmit={handleSubmit}>
-          {error && <div className="error-message">{error}</div>}
-          
-          <div className="form-group">
-            <label htmlFor="email">Email Address *</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter email address"
-              required
-            />
-          </div>
-          
-          <div className="modal-actions">
-            <button 
-              type="button" 
-              className="cancel-btn" 
-              onClick={onClose}
-              disabled={isSubmitting}
-            >
-              Cancel
-            </button>
-            <button 
-              type="submit" 
-              className="submit-btn" 
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Sending Invite...' : 'Send Invite'}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+        <div className="form-group">
+          <label htmlFor="email">Email Address *</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter team member's email"
+            required
+            autoFocus
+            className="modal-input"
+          />
+        </div>
+      </form>
+    </Modal>
   );
 }
 

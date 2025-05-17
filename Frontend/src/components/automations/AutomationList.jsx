@@ -109,7 +109,7 @@ function AutomationList({ project, isOwner }) {
       {error && <div className="error-message">{error}</div>}
 
       {automations.length === 0 ? (
-        <div className="empty-automations">
+        <div className="empty-state">
           <p>No automations set up yet.</p>
           {isOwner && (
             <button 
