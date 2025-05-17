@@ -868,3 +868,8 @@ input:checked + .toggle-slider {
 input:checked + .toggle-slider:before {
   transform: translateX(24px);
 }
+
+.modal-overlay {
+  /* ...existing styles... */
+  z-index: 1100; /* Higher than header */
+}
