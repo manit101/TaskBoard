@@ -13,7 +13,7 @@
 .logo a {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: #2563eb;
   text-decoration: none;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .nav-links a:hover {
-  color: var(--color-primary);
+  color: #2563eb;
 }
 
 .user-section {
@@ -71,7 +71,7 @@
 }
 
 .login-btn {
-  background-color: var(--color-primary);
+  background-color: #2563eb;
   color: white;
   padding: 0.5rem 1.2rem;
   border-radius: 4px;
@@ -81,5 +81,5 @@
 }
 
 .login-btn:hover {
-  background-color: var(--color-accent);
+  background-color: #1d4ed8;
 }
