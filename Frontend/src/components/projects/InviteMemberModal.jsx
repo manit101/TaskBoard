@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { inviteUserToProject } from '../../services/projectService';
 import { AlertCircle } from 'lucide-react';
 import Modal from '../common/Modal';
-import '../tasks/Tasks.css'; // Import the same styles as NewTaskModal
+import '../tasks/Tasks.css';
 
 function InviteMemberModal({ projectId, onClose, onMemberInvited }) {
   const [email, setEmail] = useState('');
@@ -17,6 +17,7 @@ function InviteMemberModal({ projectId, onClose, onMemberInvited }) {
       return;
     }
     
+    // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError('Please enter a valid email address');
@@ -29,6 +30,7 @@ function InviteMemberModal({ projectId, onClose, onMemberInvited }) {
       onMemberInvited();
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to invite user');
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -49,7 +51,7 @@ function InviteMemberModal({ projectId, onClose, onMemberInvited }) {
         className={`modal-primary-btn ${isSubmitting ? 'loading-btn' : ''}`}
         disabled={isSubmitting}
       >
-        {isSubmitting ? 'Sending Invite...' : 'Send Invitation'}
+        {isSubmitting ? 'Sending Invite...' : 'Send Invite'}
       </button>
     </div>
   );
@@ -80,7 +82,7 @@ function InviteMemberModal({ projectId, onClose, onMemberInvited }) {
             placeholder="Enter team member's email"
             required
             autoFocus
-            className="modal-input"
+            className="focus:ring-[#547792] focus:border-[#547792]"
           />
         </div>
       </form>
