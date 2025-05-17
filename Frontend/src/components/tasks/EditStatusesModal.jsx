@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { updateProjectStatuses } from '../../services/taskService';
-import { AlertCircle, ArrowUp, ArrowDown, X } from 'lucide-react';
-import Modal from '../common/Modal';
 import './Tasks.css';
 
 function EditStatusesModal({ project, onClose, onStatusesUpdated }) {
@@ -65,71 +63,22 @@ function EditStatusesModal({ project, onClose, onStatusesUpdated }) {
       setIsSubmitting(false);
     }
   };
-
-  const modalFooter = (
-    <div className="form-footer">
-      <button 
-        type="button" 
-        className="modal-secondary-btn" 
-        onClick={onClose}
-        disabled={isSubmitting}
-      >
-        Cancel
-      </button>
-      <button 
-        type="button"
-        onClick={handleSubmit}
-        className={`modal-primary-btn ${isSubmitting ? 'loading-btn' : ''}`}
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? 'Saving...' : 'Save Changes'}
-      </button>
-    </div>
-  );
-
+  
   return (
-    <Modal
-      isOpen={true}
-      onClose={onClose}
-      title="Edit Project Statuses"
-      size="medium"
-      footer={modalFooter}
-    >
-      <form className="modal-form">
-        {error && (
-          <div className="error-message">
-            <AlertCircle size={18} />
-            {error}
-          </div>
-        )}
-        
-        <div className="form-group">
-          <label htmlFor="newStatus">Add New Status</label>
-          <div className="flex gap-3">
-            <input
-              type="text"
-              id="newStatus"
-              value={newStatus}
-              onChange={(e) => setNewStatus(e.target.value)}
-              placeholder="Enter status name"
-              className="flex-1"
-            />
-            <button 
-              type="button"
-              onClick={handleAddStatus}
-              className="modal-primary-btn !py-2"
-            >
-              Add
-            </button>
-          </div>
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h2>Edit Project Statuses</h2>
+          <button className="close-btn" onClick={onClose}>&times;</button>
         </div>
         
-        <div className="form-section modal-section">
-          <h3 className="section-title">Current Statuses</h3>
+        <form onSubmit={handleSubmit}>
+          {error && <div className="error-message">{error}</div>}
+          
           <div className="status-list">
             {statuses.map((status, index) => (
               <div key={index} className="status-item">
-                <span className="status-name">{status}</span>
+                <span>{status}</span>
                 <div className="status-actions">
                   <button 
                     type="button"
@@ -137,7 +86,7 @@ function EditStatusesModal({ project, onClose, onStatusesUpdated }) {
                     onClick={() => handleMoveUp(index)}
                     disabled={index === 0}
                   >
-                    <ArrowUp size={16} />
+                    ↑
                   </button>
                   <button 
                     type="button"
@@ -145,28 +94,62 @@ function EditStatusesModal({ project, onClose, onStatusesUpdated }) {
                     onClick={() => handleMoveDown(index)}
                     disabled={index === statuses.length - 1}
                   >
-                    <ArrowDown size={16} />
+                    ↓
                   </button>
                   <button 
                     type="button"
                     className="icon-btn remove"
                     onClick={() => handleRemoveStatus(index)}
                   >
-                    <X size={16} />
+                    ×
                   </button>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-        
-        <div className="info-message">
-          <p className="text-sm text-[#64748b] mt-4">
+          
+          <div className="add-status-form">
+            <div className="form-row">
+              <input
+                type="text"
+                value={newStatus}
+                onChange={(e) => setNewStatus(e.target.value)}
+                placeholder="New status name"
+              />
+              <button 
+                type="button"
+                className="add-status-btn"
+                onClick={handleAddStatus}
+              >
+                Add
+              </button>
+            </div>
+          </div>
+          
+          <div className="note">
             <strong>Note:</strong> Tasks in removed statuses will be moved to the first status.
-          </p>
-        </div>
-      </form>
-    </Modal>
+          </div>
+          
+          <div className="modal-actions">
+            <button 
+              type="button" 
+              className="cancel-btn" 
+              onClick={onClose}
+              disabled={isSubmitting}
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              className="submit-btn" 
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Saving...' : 'Save Statuses'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 
