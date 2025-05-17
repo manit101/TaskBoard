@@ -34,7 +34,7 @@ function ProjectList() {
   };
   
   if (loading) {
-    return <div className="loading-spinner">Loading projects...</div>;
+    return <div className="loading">Loading projects...</div>;
   }
   
   return (
@@ -68,7 +68,7 @@ function ProjectList() {
             </Link>
           ))
         ) : (
-          <div className="empty-projects">
+          <div className="empty-state">
             <p>You don't have any projects yet.</p>
             <button 
               className="create-project-btn"

@@ -168,7 +168,7 @@ function Kanban({ project, isOwner }) {
   };
   
   if (loading) {
-    return <div className="loading-spinner">Loading tasks...</div>;
+    return <div className="loading">Loading tasks...</div>;
   }
   
   // Group tasks by status

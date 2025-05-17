@@ -33,7 +33,7 @@ function AssignedTasks() {
   };
 
   if (loading) {
-    return <div className="loading-spinner">Loading your tasks...</div>;
+    return <div className="loading">Loading your tasks...</div>;
   }
 
   if (error) {

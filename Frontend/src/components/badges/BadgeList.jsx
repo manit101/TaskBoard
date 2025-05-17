@@ -26,7 +26,7 @@ function BadgeList() {
   }, []);
 
   if (loading) {
-    return <div className="loading-spinner">Loading badges...</div>;
+    return <div className="loading">Loading badges...</div>;
   }
 
   return (

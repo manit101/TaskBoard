@@ -115,7 +115,7 @@ function ProjectDetail() {
   };
   
   if (loading) {
-    return <div className="loading-spinner">Loading project details...</div>;
+    return <div className="loading">Loading project details...</div>;
   }
   
   if (error) {

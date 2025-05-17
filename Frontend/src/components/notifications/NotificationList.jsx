@@ -52,7 +52,7 @@ function NotificationList() {
   };
 
   if (loading) {
-    return <div className="loading-spinner">Loading notifications...</div>;
+    return <div className="loading">Loading notifications...</div>;
   }
 
   return (

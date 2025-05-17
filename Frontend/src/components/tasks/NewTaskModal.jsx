@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createTask } from '../../services/taskService';
 import Modal from '../common/Modal';
+import { AlertCircle } from 'lucide-react';
 import './Tasks.css';
 
 function NewTaskModal({ project, onClose, onTaskCreated }) {
@@ -38,7 +39,7 @@ function NewTaskModal({ project, onClose, onTaskCreated }) {
   };
   
   const modalFooter = (
-    <>
+    <div className="form-footer">
       <button 
         type="button" 
         className="modal-secondary-btn" 
@@ -50,12 +51,12 @@ function NewTaskModal({ project, onClose, onTaskCreated }) {
       <button 
         type="button"
         onClick={handleSubmit}
-        className="modal-primary-btn" 
+        className={`modal-primary-btn ${isSubmitting ? 'loading-btn' : ''}`}
         disabled={isSubmitting}
       >
-        {isSubmitting ? 'Creating...' : 'Create Task'}
+        {isSubmitting ? 'Creating Task...' : 'Create Task'}
       </button>
-    </>
+    </div>
   );
   
   return (
@@ -66,8 +67,13 @@ function NewTaskModal({ project, onClose, onTaskCreated }) {
       size="medium"
       footer={modalFooter}
     >
-      <form id="new-task-form">
-        {error && <div className="error-message">{error}</div>}
+      <form id="new-task-form" className="modal-form">
+        {error && (
+          <div className="error-message">
+            <AlertCircle size={18} />
+            {error}
+          </div>
+        )}
         
         <div className="form-group">
           <label htmlFor="title">Task Title *</label>
@@ -76,7 +82,7 @@ function NewTaskModal({ project, onClose, onTaskCreated }) {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter task title"
+            placeholder="What needs to be done?"
             required
             autoFocus
           />
@@ -88,9 +94,9 @@ function NewTaskModal({ project, onClose, onTaskCreated }) {
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Enter task description"
+            placeholder="Add more details about this task..."
             rows={4}
-          ></textarea>
+          />
         </div>
         
         <div className="form-row">
@@ -122,13 +128,13 @@ function NewTaskModal({ project, onClose, onTaskCreated }) {
         </div>
         
         <div className="form-group">
-          <label htmlFor="assignee">Assignee (Email)</label>
+          <label htmlFor="assignee">Assignee</label>
           <select
             id="assignee"
             value={assignee}
             onChange={(e) => setAssignee(e.target.value)}
           >
-            <option value="">Unassigned</option>
+            <option value="">Select team member</option>
             {project.members.map(member => (
               <option key={member.email} value={member.email}>
                 {member.email}

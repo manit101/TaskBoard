@@ -51,7 +51,7 @@ function AutomationList({ project, isOwner }) {
   };
 
   if (loading) {
-    return <div className="loading-spinner">Loading automations...</div>;
+    return <div className="loading">Loading automations...</div>;
   }
 
   const renderTriggerDetails = (trigger) => {

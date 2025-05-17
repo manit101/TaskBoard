@@ -63,7 +63,7 @@ function Header() {
               <div className="ml-3 relative">
                 <button
                   type="button"
-                  className="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-[#94B4C1] focus:ring-offset-1 transition-all hover:scale-105"
+                  className="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-[#ECEFCA] focus:ring-offset-1 transition-all hover:scale-105"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
                   <div className="h-8 w-8 rounded-full bg-[#213448] flex items-center justify-center text-[#ECEFCA] text-sm font-medium shadow-sm border border-[#94B4C1]">
@@ -80,13 +80,13 @@ function Header() {
                     <div className="py-2">
                       <Link
                         to="/profile"
-                        className="group flex items-center px-4 py-3 text-sm text-[#213448] hover:bg-[#94B4C1] transition-colors"
+                        className="group flex items-center px-4 py-3 text-[#547792] hover:text-[#213448]"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         Your Profile
                       </Link>
                       <button
-                        className="w-full text-left px-4 py-3 text-sm text-[#213448] hover:bg-[#94B4C1] transition-colors"
+                        className="w-full text-left px-4 py-3 text-sm bg-[#ECEFCA] text-[#547792] hover:bg-[#ECEFCA] hover:text-[#213448] focus:outline-none focus:ring-2 focus:ring-[#94B4C1] focus:ring-offset-1 transition-all text-[18px]"
                         onClick={handleSignOut}
                       >
                         Sign out
